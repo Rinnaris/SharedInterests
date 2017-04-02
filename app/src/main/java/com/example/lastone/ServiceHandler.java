@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,8 +30,6 @@ public class ServiceHandler {
     //**************************************************
     //context from the calling activity
     private Context context;
-    //the actual calling activity
-    private Activity mActivity;
     //a manager object
     private WifiP2pManager mManager;
     //a channel object gotton from the mmanager
@@ -55,10 +53,8 @@ public class ServiceHandler {
                 toast("P2P not supported, sorry.");
             }
             else if (code == WifiP2pManager.BUSY){
-                toast("Busy");
             }
             else if(code == WifiP2pManager.ERROR){
-                toast("ERROR");
             }
             else{
                 toast("Oops. Something went wrong try rebooting your device.");
@@ -80,14 +76,24 @@ public class ServiceHandler {
     //**************************************************
 
     //constructor with profile info
-    public ServiceHandler(Context contextIn, WifiP2pManager mManagerIn, MainActivity activityIn, UserProfile profileIn){
+    public ServiceHandler(Context contextIn, WifiP2pManager mManagerIn, UserProfile profileIn){
         nearby = new ArrayList<>();
         nearby2 = new ArrayList<>();
         context = contextIn;
-        mActivity = activityIn;
         mManager = mManagerIn;
         mChannel = mManager.initialize(context, getMainLooper(), null);
         mainProfile = profileIn;
+        serviceName = "SharedInterest" + mainProfile.toString();
+        registerService();
+    }
+
+    public ServiceHandler(Context contextIn, WifiP2pManager systemService) {
+        nearby = new ArrayList<>();
+        nearby2 = new ArrayList<>();
+        context = contextIn;
+        mManager = systemService;
+        mChannel = mManager.initialize(context, getMainLooper(), null);
+        mainProfile = getMainProfileFromStorage();
         serviceName = "SharedInterest" + mainProfile.toString();
         registerService();
     }
@@ -201,7 +207,6 @@ public class ServiceHandler {
             boolean known = false;
             for (UserProfile up: nearby) {
                 if(up.isSame(other)){
-                    toast("nearby");
                     known = true;
                 }
             }
@@ -224,8 +229,14 @@ public class ServiceHandler {
     }
 
     //creates a toast message with the string passed to it
-    private void toast(String s) {
+    public void toast(String s) {
         int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, s, duration);
+        toast.show();
+    }
+
+    public void toastLong(String s) {
+        int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, s, duration);
         toast.show();
     }
@@ -271,10 +282,9 @@ public class ServiceHandler {
         }
         mainProfile = new UserProfile(datax.toString());
         if(mainProfile.getName().equals("")){
-            toast("no profile yet");
+            return null;
         }
         else{
-            toast(mainProfile.toString());
         }
         return mainProfile;
     }

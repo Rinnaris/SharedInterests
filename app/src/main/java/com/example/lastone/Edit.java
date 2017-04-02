@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
