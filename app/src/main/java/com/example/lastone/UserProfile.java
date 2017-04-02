@@ -25,7 +25,7 @@ public class UserProfile {
     //      Aria~^MOV~Inception~Avengers~^GAME~Civ V~Kingdom Hearts~
     //current categories are
         movies - ^MOV, tv - ^TV, websites - ^WEB, music - ^MUS,
-        games - ^GAME, sports - ^SPORT, hobby - ^ANIM, books - ^BOOK
+        games - ^GAME, sports - ^SPORT, hobbys - ^ANIM, books - ^BOOK
      */
 
     //one arraylist per category, all are initialized but can be
@@ -36,8 +36,6 @@ public class UserProfile {
 
     //Constant String - category names
     //safe to change if needed
-    private final String phoneString = "PHO";
-    private final String mailString = "EM";
     private final String movieString = "MOV";
     private final String tvString = "TV";
     private final String websiteString = "WEB";
@@ -58,15 +56,13 @@ public class UserProfile {
     private ArrayList<ArrayList<String>> list;
 
     //Categories lists
-    private ArrayList<String> phone;
-    private ArrayList<String> email;
     private ArrayList<String> movies;
     private ArrayList<String> tv;
     private ArrayList<String> websites;
     private ArrayList<String> music;
     private ArrayList<String> games;
     private ArrayList<String> sports;
-    private ArrayList<String> hobby;
+    private ArrayList<String> hobbys;
     private ArrayList<String> books;
 
     //**********************************************************
@@ -91,18 +87,14 @@ public class UserProfile {
         readString(info);
     }
 
-    //constructer that converts between a Profile and a Userprofile
-    public UserProfile(Profile info){
+    public UserProfile(Profile profile){
         initialize();
-        name = info.getName();
-        phone.add(info.getPhone());
-        email.add(info.getEmail());
-
-        movies = info.getMovie();
-        music = info.getMusic();
-        sports = info.getSport();
-        books = info.getBook();
-        hobby = info.getHobby();
+        name = profile.getName();
+        movies = profile.getMovie();
+        music = profile.getSport();
+        sports = profile.getSport();
+        books = profile.getBook();
+        hobbys = profile.getHobby();
     }
 
     //parse string and place entries in correct arraylists
@@ -131,6 +123,7 @@ public class UserProfile {
 
         for (String s: temp) {
 
+
             //if temp has a category control character change current category arraylist
             if(s.contains(controlCharacter)){
                 currentCategory = getCategory(s);
@@ -149,8 +142,40 @@ public class UserProfile {
 
         String out = name + delimiter; //start string with name+controlcharacter
 
-        //for each category
-        for (ArrayList<String> current: list) {
+        if(!movies.isEmpty()){
+            out = out + controlCharacter + movieString + delimiter;
+            for (String s: movies) {
+                   out = out + s + delimiter;
+            }
+        }
+        if(!music.isEmpty()){
+            out = out + controlCharacter + musicString + delimiter;
+            for(String s: music){
+                out = out + s + delimiter;
+            }
+        }
+        if(!sports.isEmpty()){
+            out = out + controlCharacter + sportString + delimiter;
+            for(String s: sports){
+                out = out + s + delimiter;
+            }
+        }
+        if(!books.isEmpty()){
+            out = out + controlCharacter + sportString + delimiter;
+            for(String s: books){
+                out = out + s + delimiter;
+            }
+        }
+        if(!hobbys.isEmpty()){
+            out = out + controlCharacter + hobbyString + delimiter;
+            for(String s: hobbys){
+                out = out + s + delimiter;
+            }
+        }
+        /*//for each category
+        for (ArrayList<String> current: list){
+            System.out.println("CURRENT: " + getCategory(current));
+            System.out.println(current);
 
             //if current category is not empty
             if(!current.isEmpty()) {
@@ -166,6 +191,8 @@ public class UserProfile {
         }
 
         //return string
+        return out;*/
+
         return out;
     }
 
@@ -248,8 +275,8 @@ public class UserProfile {
         return sports;
     }
 
-    public ArrayList<String> getHobby(){
-        return hobby;
+    public ArrayList<String> getHobbys(){
+        return hobbys;
     }
 
     public ArrayList<String> getBooks(){
@@ -307,12 +334,6 @@ public class UserProfile {
     private ArrayList<String> getCategory(String in) {
         String category = removeControlCharacters(in);
 
-        if(category.equals(phoneString)){
-            return phone;
-        }
-        if(category.equals(mailString)){
-            return email;
-        }
         if(category.equals("MOV")){
             return movies;
         }
@@ -332,7 +353,7 @@ public class UserProfile {
             return sports;
         }
         else if(category.equals(hobbyString)){
-            return hobby;
+            return hobbys;
         }
         else if(category.equals(bookString)){
             return books;
@@ -344,34 +365,51 @@ public class UserProfile {
 
     //returns the string name of the arraylist passed to it
     private String getCategory(ArrayList<String> current) {
-        if(current.equals(phone)){
-            return controlCharacter + phoneString;
+        if(!current.isEmpty()){
+                   if(current.equals(movies)){
+                       return controlCharacter + movieString;
+                   }
+                   if(current.equals(tv)){
+                       return  controlCharacter + tvString;
+                   }
+                   if(current.equals(websites)){
+                       return controlCharacter + websiteString;
+                   }
+                   if(current.equals(music)){
+                       return  controlCharacter + musicString;
+                   }
+                   if(current.equals(gameString)){
+                       return  controlCharacter + gameString;
+                   }
+                   if(current.equals(sports)){
+                       return controlCharacter + sportString;
+                   }
+                   if(current.equals(hobbys)){
+                       return controlCharacter + hobbyString;
+                   }
         }
-        if(current.equals(email)){
-            return controlCharacter + mailString;
-        }
-        if(current.equals(movies)){
+        if(current == (movies)){
             return controlCharacter + movieString;
         }
-        if(current.equals(tv)){
+        if(current == (tv)){
             return controlCharacter + tvString;
         }
-        if(current.equals(websites)){
+        if(current == (websites)){
             return controlCharacter + websiteString;
         }
-        if(current.equals(music)){
+        if(current == (music)){
             return controlCharacter + musicString;
         }
-        if(current.equals(games)){
+        if(current == (games)){
             return controlCharacter + gameString;
         }
-        if(current.equals(sports)){
+        if(current == (sports)){
             return controlCharacter + sportString;
         }
-        if(current.equals(hobby)){
+        if(current == (hobbys)){
             return controlCharacter + hobbyString;
         }
-        if(current.equals(books)){
+        if(current == (books)){
             return controlCharacter + bookString;
         }
         return "";
@@ -385,21 +423,19 @@ public class UserProfile {
         list.add(music);
         list.add(games);
         list.add(sports);
-        list.add(hobby);
+        list.add(hobbys);
         list.add(books);
     }
 
     private void initialize(){
         //****************************************************
-        phone = new ArrayList<>();
-        email = new ArrayList<>();
         movies = new ArrayList<>();
         tv = new ArrayList<>();
         websites = new ArrayList<>();
         music = new ArrayList<>();
         games = new ArrayList<>();
         sports = new ArrayList<>();
-        hobby = new ArrayList<>();
+        hobbys = new ArrayList<>();
         books = new ArrayList<>();
         //****************************************************
 

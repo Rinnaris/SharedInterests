@@ -65,7 +65,6 @@ public class Setup extends AppCompatActivity {
         name = bundle.getString("name");
         phone = bundle.getString("phone");
         email = bundle.getString("email");
-        System.out.println("Name: " + name.toString());
 
         movieButton = (Button) findViewById(R.id.movieAdd);
         musicButton = (Button) findViewById(R.id.musicAdd);
@@ -180,12 +179,13 @@ public class Setup extends AppCompatActivity {
                 intent.putExtras(bundle);
 
                 Profile profile = new Profile(name, phone, email, movie, music, sport, book, hobby);
-                System.out.println("A profile has been created.");
 
                 UserProfile toSave = new UserProfile(profile);
+                System.out.println(toSave.getMovies());
+                System.out.println(toSave);
                 ServiceHandler handler = new ServiceHandler(context, (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE), toSave);
                 handler.saveMainProfileToStorage();
-                handler.unregisterService();
+                UserProfile loaded = handler.getMainProfileFromStorage();
 
                 startActivity(intent);
             }

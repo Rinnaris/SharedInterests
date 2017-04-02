@@ -57,6 +57,7 @@ public class ServiceHandler {
             else if(code == WifiP2pManager.ERROR){
             }
             else{
+                System.out.println("ERROR CODE" + code);
                 toast("Oops. Something went wrong try rebooting your device.");
             }
 
@@ -122,6 +123,7 @@ public class ServiceHandler {
             public void onSuccess() {
                 // Command successful! Code isn't necessarily needed here,
                 // Unless you want to update the UI or add logging statements.
+                toast("Register success");
             }
 
             @Override
@@ -149,7 +151,7 @@ public class ServiceHandler {
 
     //call to look for other instances of the app
     public void discoverService() {
-
+        System.out.println("DISCOVER");
         //I think this creates a listener for when services are found
         //probably
         WifiP2pManager.DnsSdTxtRecordListener txtListener = new WifiP2pManager.DnsSdTxtRecordListener() {
