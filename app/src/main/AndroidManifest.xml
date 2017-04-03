@@ -36,8 +36,9 @@
 
         <activity android:name=".Edit"></activity>
 
-        <activity android:name=".Searching">
-        </activity>
+        <activity android:name=".Searching"></activity>
+
+        <activity android:name=".newSearching"></activity>
     </application>
 
 </manifest>

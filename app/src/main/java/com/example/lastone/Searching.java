@@ -41,7 +41,7 @@ public class Searching extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Searching.this, Edit.class);
+                Intent intent = new Intent(Searching.this, newSearching.class);
                 startActivity(intent);
             }
         });

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     //opens the searching activity instead
-                    Intent intent = new Intent(MainActivity.this, Searching.class);
+                    Intent intent = new Intent(MainActivity.this, newSearching.class);
                     startActivity(intent);
                 }
             }

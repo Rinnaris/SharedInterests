@@ -165,7 +165,7 @@ public class Setup extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Setup.this, Searching.class);
+                Intent intent = new Intent(Setup.this, newSearching.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", name);
                 bundle.putString("phone", phone);
