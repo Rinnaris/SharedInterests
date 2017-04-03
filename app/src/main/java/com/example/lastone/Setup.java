@@ -105,14 +105,15 @@ public class Setup extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!musicField.getText().equals(""))
+                if(!musicField.getText().equals("")){
                     music.add(musicField.getText() + "");
-                musicField.setText("");
+                    musicField.setText("");
 
-                int i = (music.size() - 1);
-                String interest = music.get(i);
+                    int i = (music.size() - 1);
+                    String interest = music.get(i);
 
-                musicView.setText(musicView.getText() + " " + interest + ", ");
+                    musicView.setText(musicView.getText() + " " + interest + ", ");
+                }
             }
         });
 
@@ -120,14 +121,15 @@ public class Setup extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!bookField.getText().equals(""))
+                if(!bookField.getText().equals("")) {
                     book.add(bookField.getText() + "");
-                bookField.setText("");
+                    bookField.setText("");
 
-                int i = (book.size() - 1);
-                String interest = book.get(i);
+                    int i = (book.size() - 1);
+                    String interest = book.get(i);
 
-                bookView.setText(bookView.getText() + " " + interest + ", ");
+                    bookView.setText(bookView.getText() + " " + interest + ", ");
+                }
             }
         });
 
@@ -135,14 +137,15 @@ public class Setup extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!sportField.getText().equals(""))
+                if(!sportField.getText().equals("")) {
                     sport.add(sportField.getText() + "");
-                sportField.setText("");
+                    sportField.setText("");
 
-                int i = (sport.size() - 1);
-                String interest = sport.get(i);
+                    int i = (sport.size() - 1);
+                    String interest = sport.get(i);
 
-                sportView.setText(sportView.getText() + " " + interest + ", ");
+                    sportView.setText(sportView.getText() + " " + interest + ", ");
+                }
             }
         });
 
@@ -150,14 +153,15 @@ public class Setup extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!hobbyField.getText().equals(""))
+                if(!hobbyField.getText().equals("")) {
                     hobby.add(hobbyField.getText() + "");
-                hobbyField.setText("");
+                    hobbyField.setText("");
 
-                int i = (hobby.size() - 1);
-                String interest = hobby.get(i);
+                    int i = (hobby.size() - 1);
+                    String interest = hobby.get(i);
 
-                hobbyView.setText(hobbyView.getText() + " " + interest + ", ");
+                    hobbyView.setText(hobbyView.getText() + " " + interest + ", ");
+                }
             }
         });
 
@@ -186,10 +190,13 @@ public class Setup extends AppCompatActivity {
                 handler.saveMainProfileToStorage();
                 UserProfile loaded = handler.getMainProfileFromStorage();
 
+                handler.unregisterService();
+
                 startActivity(intent);
             }
         });
     }
+
 
     //found this on stackoverflow
     //hides keyboard on click outside of textview

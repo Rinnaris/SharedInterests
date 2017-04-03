@@ -46,9 +46,6 @@ public class newSearching extends AppCompatActivity {
         profileList = new ArrayList<>();
         running = true;
 
-        //TODO change this to use nearby profiles instead of the internal one
-        profileList.add(handler.getMainProfileFromStorage());
-
         //starts building layout
         topLayout = (LinearLayout) findViewById(R.id.topView);
         topContents = new ArrayList<>();
@@ -59,6 +56,7 @@ public class newSearching extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 handler.discoverService();
+                profileList = handler.getNearby();
                 buildUI();
             }
         });
@@ -71,9 +69,6 @@ public class newSearching extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        handler.discoverService();
-        buildUI();
     }
 
     private void discoverLoop() {
@@ -279,6 +274,7 @@ public class newSearching extends AppCompatActivity {
     }
 
     protected void onResume(){
+        handler.unregisterService();
         handler = new ServiceHandler(this, (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE));
         running = true;
 

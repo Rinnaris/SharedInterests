@@ -293,4 +293,8 @@ public class ServiceHandler {
     public void setMainProfile(UserProfile mainProfile) {
         this.mainProfile = mainProfile;
     }
+
+    public ArrayList<UserProfile> getNearby() {
+        return nearby;
+    }
 }

@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         //creates a servicehandler with a temporary profile which will immediatly be replaced so don't worry about it
         handler = new ServiceHandler(this, (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE), new UserProfile("Bobby~^MOV~AAA"));
-        handler.unregisterService();
 
         //gets button and sets listener
         nextButton = (Button) findViewById(R.id.nextButton);
@@ -42,5 +41,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPause(){
+        handler.unregisterService();
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy(){
+        handler.unregisterService();
+        super.onDestroy();
     }
 }

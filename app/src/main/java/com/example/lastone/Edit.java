@@ -687,6 +687,7 @@ public class Edit extends AppCompatActivity {
     //assigns infovariables
     private void setInfoVariables() {
         name = (EditText) findViewById(R.id.nameText);
+        name.setText(profile.getName());
         phone = (EditText) findViewById(R.id.phoneText);
         email = (EditText) findViewById(R.id.emailText);
     }
