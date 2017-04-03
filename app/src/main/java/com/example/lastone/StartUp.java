@@ -37,8 +37,6 @@ public class StartUp extends AppCompatActivity {
         context = this;
 
         nameText = (EditText) findViewById(R.id.categoryText);
-        phoneText = (EditText) findViewById(R.id.phone);
-        emailText = (EditText) findViewById(R.id.email);
 
         next = (Button) findViewById(R.id.nextButton);
         next.setOnClickListener(new View.OnClickListener() {

@@ -33,7 +33,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Information"
+                    android:text="Name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="24sp" />
@@ -47,21 +47,6 @@
                     android:inputType="textPersonName"
                     android:text="Name" />
 
-                <EditText
-                    android:id="@+id/phoneText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@android:string/emptyPhoneNumber"
-                    android:inputType="phone" />
-
-                <EditText
-                    android:id="@+id/emailText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="(No email)"
-                    android:inputType="textEmailAddress" />
             </LinearLayout>
 
             <LinearLayout

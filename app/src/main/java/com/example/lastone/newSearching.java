@@ -25,7 +25,7 @@ public class newSearching extends AppCompatActivity {
 
     //non UI variables
     ServiceHandler handler;
-    ArrayList<UserProfile> profileList;
+    public ArrayList<UserProfile> profileList;
     Thread queue;
     boolean running;
     boolean update;
@@ -94,7 +94,7 @@ public class newSearching extends AppCompatActivity {
         queue.start();
     }
 
-    private void buildUI() {
+    public void buildUI() {
 
         topLayout.removeAllViews();
         ArrayList<String> temp;

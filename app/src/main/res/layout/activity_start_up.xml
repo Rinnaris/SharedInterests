@@ -20,71 +20,30 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_marginTop="70dp"
-        android:layout_below="@+id/disclaimer"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="38dp" />
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/categoryText"
-        android:layout_alignParentStart="true"
         android:text="Name*"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/phoneView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone"
-        android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:layout_marginTop="65dp"
-        android:layout_below="@+id/nameView"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/phoneView"
-        android:layout_alignBottom="@+id/phoneView"
-        android:layout_alignStart="@+id/categoryText"
-        android:ems="10"
-        android:inputType="phone" />
-
-    <TextView
-        android:id="@+id/emailView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="Email"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:layout_below="@+id/phone"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/emailView"
-        android:layout_alignBottom="@+id/emailView"
-        android:layout_alignStart="@+id/phone"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:layout_alignBottom="@+id/categoryText"
+        android:layout_toStartOf="@+id/categoryText"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/nextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text="Next" />
+        android:text="Next"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/categoryText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

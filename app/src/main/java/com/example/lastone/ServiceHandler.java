@@ -28,6 +28,8 @@ import static android.os.Looper.getMainLooper;
 
 public class ServiceHandler {
     //**************************************************
+    //the calling newSearch activity for UI updates
+    private newSearching searchActivity;
     //context from the calling activity
     private Context context;
     //a manager object
@@ -89,6 +91,18 @@ public class ServiceHandler {
     }
 
     public ServiceHandler(Context contextIn, WifiP2pManager systemService) {
+        nearby = new ArrayList<>();
+        nearby2 = new ArrayList<>();
+        context = contextIn;
+        mManager = systemService;
+        mChannel = mManager.initialize(context, getMainLooper(), null);
+        mainProfile = getMainProfileFromStorage();
+        serviceName = "SharedInterest" + mainProfile.toString();
+        registerService();
+    }
+
+    public ServiceHandler(Context contextIn, WifiP2pManager systemService, newSearching activityIn) {
+        searchActivity = activityIn;
         nearby = new ArrayList<>();
         nearby2 = new ArrayList<>();
         context = contextIn;
@@ -161,7 +175,10 @@ public class ServiceHandler {
                 buddies.clear();
                 buddies.put(srcDevice.deviceAddress, (String) txtRecordMap.get("buddyname"));
                 processServiceName(txtRecordMap.get("buddyname"));
-                System.out.println(txtRecordMap.get("buddyname"));
+                if(searchActivity != null){
+                    searchActivity.profileList = nearby;
+                    searchActivity.buildUI();
+                }
             }
         };
 
