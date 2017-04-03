@@ -3,7 +3,6 @@ package com.example.lastone;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 //Launches at the start of the app when no profile exists
@@ -38,7 +36,7 @@ public class StartUp extends AppCompatActivity {
 
         context = this;
 
-        nameText = (EditText) findViewById(R.id.name);
+        nameText = (EditText) findViewById(R.id.categoryText);
         phoneText = (EditText) findViewById(R.id.phone);
         emailText = (EditText) findViewById(R.id.email);
 

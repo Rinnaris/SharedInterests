@@ -15,7 +15,7 @@
     tools:context="com.example.lastone.StartUp">
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/categoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -29,7 +29,7 @@
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/name"
+        android:layout_alignBottom="@+id/categoryText"
         android:layout_alignParentStart="true"
         android:text="Name*"
         android:textColor="@android:color/black"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/phoneView"
         android:layout_alignBottom="@+id/phoneView"
-        android:layout_alignStart="@+id/name"
+        android:layout_alignStart="@+id/categoryText"
         android:ems="10"
         android:inputType="phone" />
 

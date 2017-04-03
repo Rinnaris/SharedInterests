@@ -123,7 +123,6 @@ public class ServiceHandler {
             public void onSuccess() {
                 // Command successful! Code isn't necessarily needed here,
                 // Unless you want to update the UI or add logging statements.
-                toast("Register success");
             }
 
             @Override
@@ -220,7 +219,7 @@ public class ServiceHandler {
 
                 //if they have at least one thing in common
                 if(shared.size()>=1){
-                    String toToast = "Someone nearby shares " + shared.size() + " interests with you.";
+                    String toToast = "User " + other.getName() + " shares " + shared.size() + " interests with you.";
                     toast(toToast);
                 }
             }

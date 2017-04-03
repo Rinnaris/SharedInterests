@@ -181,8 +181,7 @@ public class Setup extends AppCompatActivity {
                 Profile profile = new Profile(name, phone, email, movie, music, sport, book, hobby);
 
                 UserProfile toSave = new UserProfile(profile);
-                System.out.println(toSave.getMovies());
-                System.out.println(toSave);
+
                 ServiceHandler handler = new ServiceHandler(context, (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE), toSave);
                 handler.saveMainProfileToStorage();
                 UserProfile loaded = handler.getMainProfileFromStorage();

@@ -91,7 +91,7 @@ public class UserProfile {
         initialize();
         name = profile.getName();
         movies = profile.getMovie();
-        music = profile.getSport();
+        music = profile.getMusic();
         sports = profile.getSport();
         books = profile.getBook();
         hobbys = profile.getHobby();
@@ -122,7 +122,6 @@ public class UserProfile {
         ArrayList<String> currentCategory = null;
 
         for (String s: temp) {
-
 
             //if temp has a category control character change current category arraylist
             if(s.contains(controlCharacter)){
@@ -160,21 +159,21 @@ public class UserProfile {
                 out = out + s + delimiter;
             }
         }
-        if(!books.isEmpty()){
-            out = out + controlCharacter + sportString + delimiter;
-            for(String s: books){
-                out = out + s + delimiter;
-            }
-        }
         if(!hobbys.isEmpty()){
             out = out + controlCharacter + hobbyString + delimiter;
             for(String s: hobbys){
                 out = out + s + delimiter;
             }
         }
+        if(!books.isEmpty()){
+            out = out + controlCharacter + "BOOK" + delimiter;
+            for(String s: books){
+                out = out + s + delimiter;
+            }
+        }
         /*//for each category
         for (ArrayList<String> current: list){
-            System.out.println("CURRENT: " + getCategory(current));
+            .println("CURRENT: " + getCategory(current));
             System.out.println(current);
 
             //if current category is not empty
@@ -349,13 +348,13 @@ public class UserProfile {
         else if(category.equals(gameString)){
             return games;
         }
-        else if(category.equals(sportString)){
+        else if(category.equals("SPORT")){
             return sports;
         }
         else if(category.equals(hobbyString)){
             return hobbys;
         }
-        else if(category.equals(bookString)){
+        else if(category.equals("BOOK")){
             return books;
         }
         else {
@@ -387,6 +386,9 @@ public class UserProfile {
                    if(current.equals(hobbys)){
                        return controlCharacter + hobbyString;
                    }
+                   if(current.equals(books)){
+                       return controlCharacter + "BOOK";
+                   }
         }
         if(current == (movies)){
             return controlCharacter + movieString;
@@ -410,7 +412,7 @@ public class UserProfile {
             return controlCharacter + hobbyString;
         }
         if(current == (books)){
-            return controlCharacter + bookString;
+            return controlCharacter + "BOOK";
         }
         return "";
     }
@@ -458,6 +460,26 @@ public class UserProfile {
         String otherProfile = other.toString();
         //return true if the strings are equal
         return thisProfile.equals(otherProfile);
+    }
+
+    public void setMovie(ArrayList<String> movie) {
+        this.movies = movie;
+    }
+
+    public void setMusic(ArrayList<String> music) {
+        this.music = music;
+    }
+
+    public void setSport(ArrayList<String> sport) {
+        this.sports = sport;
+    }
+
+    public void setBook(ArrayList<String> book) {
+        this.books = book;
+    }
+
+    public void setHobby(ArrayList<String> hobby) {
+        this.hobbys = hobby;
     }
 
     //**********************************************************************
