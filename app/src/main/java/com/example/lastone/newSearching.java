@@ -274,8 +274,10 @@ public class newSearching extends AppCompatActivity {
     }
 
     protected void onResume(){
+        handler.toast("Search may need to be pressed again after a few seconds to update list.");
         handler.unregisterService();
         handler = new ServiceHandler(this, (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE));
+        handler.discoverService();
         running = true;
 
         super.onResume();

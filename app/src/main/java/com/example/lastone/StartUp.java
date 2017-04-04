@@ -51,8 +51,6 @@ public class StartUp extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-                phone = phoneText.getText() + "";
-                email = emailText.getText() + "";
 
                 Intent intent = new Intent(StartUp.this, Setup.class);
                 Bundle bundle = new Bundle();
