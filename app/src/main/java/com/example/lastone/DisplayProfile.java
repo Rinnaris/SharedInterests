@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -40,7 +40,7 @@ public class DisplayProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_display_profile);
 
         Bundle bundle = getIntent().getExtras();
         name = bundle.getString("name");
@@ -79,9 +79,22 @@ public class DisplayProfile extends AppCompatActivity {
     }
 
     void MakeProfile(Profile profile) {
-        nameView.setText(profile.getName());
-        phoneView.setText(profile.getPhone());
-        emailView.setText(profile.getEmail());
+        if(profile == null){
+            System.out.println("Profile is null");
+        }
+        if(nameView == null){
+            System.out.println("NAMEVIEW IS NULL");
+        }
+        if(profile.getName() != null) {
+            nameView.setText(profile.getName());
+        }
+        if(profile.getPhone() != null) {
+            phoneView.setText(profile.getPhone());
+        }
+        if(profile.getEmail() != null) {
+            emailView.setText(profile.getEmail());
+        }
+
         for (int i = 0; i < movie.size(); i++)
             movieView.setText(profile.getMovie().get(i));
         for (int i = 0; i < music.size(); i++)

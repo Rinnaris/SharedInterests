@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import org.junit.Test;
 

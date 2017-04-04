@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class UserProfile {
     //      Aria~^MOV~Inception~Avengers~^GAME~Civ V~Kingdom Hearts~
     //current categories are
         movies - ^MOV, tv - ^TV, websites - ^WEB, music - ^MUS,
-        games - ^GAME, sports - ^SPORT, anime - ^ANIM, books - ^BOOK
+        games - ^GAME, sports - ^SPORT, hobbys - ^ANIM, books - ^BOOK
      */
 
     //one arraylist per category, all are initialized but can be
@@ -42,7 +42,7 @@ public class UserProfile {
     private final String musicString = "MUS";
     private final String gameString = "GAME";
     private final String sportString = "SPORT";
-    private final String animeString = "ANIM";
+    private final String hobbyString = "ANIM";
     private final String bookString = "BOOK";
     private final String controlCharacter = "^";
     private final String delimiter = "~";
@@ -62,7 +62,7 @@ public class UserProfile {
     private ArrayList<String> music;
     private ArrayList<String> games;
     private ArrayList<String> sports;
-    private ArrayList<String> anime;
+    private ArrayList<String> hobbys;
     private ArrayList<String> books;
 
     //**********************************************************
@@ -85,6 +85,16 @@ public class UserProfile {
         initialize();
         //parse string
         readString(info);
+    }
+
+    public UserProfile(Profile profile){
+        initialize();
+        name = profile.getName();
+        movies = profile.getMovie();
+        music = profile.getMusic();
+        sports = profile.getSport();
+        books = profile.getBook();
+        hobbys = profile.getHobby();
     }
 
     //parse string and place entries in correct arraylists
@@ -113,7 +123,6 @@ public class UserProfile {
 
         for (String s: temp) {
 
-
             //if temp has a category control character change current category arraylist
             if(s.contains(controlCharacter)){
                 currentCategory = getCategory(s);
@@ -132,8 +141,40 @@ public class UserProfile {
 
         String out = name + delimiter; //start string with name+controlcharacter
 
-        //for each category
-        for (ArrayList<String> current: list) {
+        if(!movies.isEmpty()){
+            out = out + controlCharacter + movieString + delimiter;
+            for (String s: movies) {
+                   out = out + s + delimiter;
+            }
+        }
+        if(!music.isEmpty()){
+            out = out + controlCharacter + musicString + delimiter;
+            for(String s: music){
+                out = out + s + delimiter;
+            }
+        }
+        if(!sports.isEmpty()){
+            out = out + controlCharacter + sportString + delimiter;
+            for(String s: sports){
+                out = out + s + delimiter;
+            }
+        }
+        if(!hobbys.isEmpty()){
+            out = out + controlCharacter + hobbyString + delimiter;
+            for(String s: hobbys){
+                out = out + s + delimiter;
+            }
+        }
+        if(!books.isEmpty()){
+            out = out + controlCharacter + "BOOK" + delimiter;
+            for(String s: books){
+                out = out + s + delimiter;
+            }
+        }
+        /*//for each category
+        for (ArrayList<String> current: list){
+            .println("CURRENT: " + getCategory(current));
+            System.out.println(current);
 
             //if current category is not empty
             if(!current.isEmpty()) {
@@ -149,6 +190,8 @@ public class UserProfile {
         }
 
         //return string
+        return out;*/
+
         return out;
     }
 
@@ -231,8 +274,8 @@ public class UserProfile {
         return sports;
     }
 
-    public ArrayList<String> getAnime(){
-        return anime;
+    public ArrayList<String> getHobbys(){
+        return hobbys;
     }
 
     public ArrayList<String> getBooks(){
@@ -305,13 +348,13 @@ public class UserProfile {
         else if(category.equals(gameString)){
             return games;
         }
-        else if(category.equals(sportString)){
+        else if(category.equals("SPORT")){
             return sports;
         }
-        else if(category.equals(animeString)){
-            return anime;
+        else if(category.equals(hobbyString)){
+            return hobbys;
         }
-        else if(category.equals(bookString)){
+        else if(category.equals("BOOK")){
             return books;
         }
         else {
@@ -321,29 +364,55 @@ public class UserProfile {
 
     //returns the string name of the arraylist passed to it
     private String getCategory(ArrayList<String> current) {
-        if(current.equals(movies)){
+        if(!current.isEmpty()){
+                   if(current.equals(movies)){
+                       return controlCharacter + movieString;
+                   }
+                   if(current.equals(tv)){
+                       return  controlCharacter + tvString;
+                   }
+                   if(current.equals(websites)){
+                       return controlCharacter + websiteString;
+                   }
+                   if(current.equals(music)){
+                       return  controlCharacter + musicString;
+                   }
+                   if(current.equals(gameString)){
+                       return  controlCharacter + gameString;
+                   }
+                   if(current.equals(sports)){
+                       return controlCharacter + sportString;
+                   }
+                   if(current.equals(hobbys)){
+                       return controlCharacter + hobbyString;
+                   }
+                   if(current.equals(books)){
+                       return controlCharacter + "BOOK";
+                   }
+        }
+        if(current == (movies)){
             return controlCharacter + movieString;
         }
-        if(current.equals(tv)){
+        if(current == (tv)){
             return controlCharacter + tvString;
         }
-        if(current.equals(websites)){
+        if(current == (websites)){
             return controlCharacter + websiteString;
         }
-        if(current.equals(music)){
+        if(current == (music)){
             return controlCharacter + musicString;
         }
-        if(current.equals(games)){
+        if(current == (games)){
             return controlCharacter + gameString;
         }
-        if(current.equals(sports)){
+        if(current == (sports)){
             return controlCharacter + sportString;
         }
-        if(current.equals(anime)){
-            return controlCharacter + animeString;
+        if(current == (hobbys)){
+            return controlCharacter + hobbyString;
         }
-        if(current.equals(books)){
-            return controlCharacter + bookString;
+        if(current == (books)){
+            return controlCharacter + "BOOK";
         }
         return "";
     }
@@ -356,7 +425,7 @@ public class UserProfile {
         list.add(music);
         list.add(games);
         list.add(sports);
-        list.add(anime);
+        list.add(hobbys);
         list.add(books);
     }
 
@@ -368,7 +437,7 @@ public class UserProfile {
         music = new ArrayList<>();
         games = new ArrayList<>();
         sports = new ArrayList<>();
-        anime = new ArrayList<>();
+        hobbys = new ArrayList<>();
         books = new ArrayList<>();
         //****************************************************
 
@@ -391,6 +460,26 @@ public class UserProfile {
         String otherProfile = other.toString();
         //return true if the strings are equal
         return thisProfile.equals(otherProfile);
+    }
+
+    public void setMovie(ArrayList<String> movie) {
+        this.movies = movie;
+    }
+
+    public void setMusic(ArrayList<String> music) {
+        this.music = music;
+    }
+
+    public void setSport(ArrayList<String> sport) {
+        this.sports = sport;
+    }
+
+    public void setBook(ArrayList<String> book) {
+        this.books = book;
+    }
+
+    public void setHobby(ArrayList<String> hobby) {
+        this.hobbys = hobby;
     }
 
     //**********************************************************************

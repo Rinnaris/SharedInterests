@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WifiDirectHandler</string>
+    <string name="app_name">Shared Interests</string>
     <string name="movie">Movies/TV</string>
     <string name="book">Books</string>
     <string name="sport">Sports</string>

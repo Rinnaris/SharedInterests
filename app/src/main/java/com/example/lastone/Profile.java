@@ -1,4 +1,4 @@
-package com.example.sharedinterests;
+package com.example.lastone;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -98,7 +98,7 @@ public class Profile implements Parcelable {
         return book;
     }
 
-    ArrayList<String> getHobby(){
+    public ArrayList<String> getHobby(){
         return hobby;
     }
 
